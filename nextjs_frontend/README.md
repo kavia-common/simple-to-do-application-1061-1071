@@ -1,36 +1,28 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+This is a [Next.js](https://nextjs.org) project bootstrapped with `create-next-app`.
 
-## Getting Started
+## Todo Frontend
 
-First, run the development server:
+This app implements a Todo UI styled with cues from a Figma “MyProfile” mobile design (asset files under /assets). It connects to a backend at `/api/todos` for CRUD.
+
+### Environment
+
+Copy `.env.example` to `.env` and set:
+- `NEXT_PUBLIC_BACKEND_URL` (optional): Base URL to your backend (e.g. `http://localhost:3001`). Leave empty if the frontend is reverse-proxied to the backend and can use same-origin relative paths.
+
+### Development
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000 — root redirects to `/todos`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Features
+- Create, list, search, filter (All / Active / Completed)
+- Toggle complete, inline edit, delete
+- Types and service client (`src/types/todo.ts`, `src/lib/api.ts`)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Notes
+- Styling borrows layout tokens from the Figma-exported MyProfile assets (rounded cards, underline tabs, subtle chips) while keeping a light modern theme specified in the work item.
+- API contract aligns with the provided OpenAPI under the backend container.
